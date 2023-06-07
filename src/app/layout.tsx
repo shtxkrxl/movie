@@ -1,7 +1,8 @@
+import Navbar from './components/Navbar';
 import './globals.css';
 import { Montserrat } from 'next/font/google';
 
-const inter = Montserrat({ subsets: ['cyrillic'] });
+const montserrat = Montserrat({ subsets: ['cyrillic'] });
 
 export const metadata = {
   title: 'Movie',
@@ -15,7 +16,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang='ru'>
-      <body className={inter.className}>{children}</body>
+      <body className={montserrat.className}>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
