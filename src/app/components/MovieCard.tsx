@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import poster from '../../../public/360.jpeg';
 import { Movie } from '../models/models';
 
 const MovieCard = ({ size, movie }: Props) => {
@@ -21,7 +20,13 @@ const MovieCard = ({ size, movie }: Props) => {
           size === 'lg'
             ? 'text-[20px] leading-[28px]'
             : 'text-[16px] leading-[24px]'
-        } absolute left-[8px] top-[8px] bg-[#00B631] px-[6px]  font-semibold`}>
+        } ${
+          movie.rating.kp > 6
+            ? 'bg-[#00B631]'
+            : movie.rating.kp > 4
+            ? 'bg-[#DEA000]'
+            : 'bg-[#CA0000]'
+        } absolute left-[8px] top-[8px] px-[6px]  font-semibold`}>
         {Math.round(movie.rating.kp * 10) / 10}
       </div>
     </div>
