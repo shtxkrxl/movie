@@ -4,4 +4,9 @@
 
 :root {
   background-color: black;
+  color: white;
+}
+
+::selection {
+  background-color: #bb2649;
 }
