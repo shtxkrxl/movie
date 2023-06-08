@@ -6,7 +6,7 @@ const MovieCard = ({ size, movie }: Props) => {
     <div
       className={`${
         size === 'lg' ? 'h-[386px] w-[269px]' : 'h-[274px] w-[191px]'
-      } relative cursor-pointer transition-all hover:scale-[1.1] hover:shadow-[0_0_11px_20px_rgba(0,0,0,0.25)]`}>
+      } relative cursor-pointer transition-all hover:z-[1] hover:scale-[1.1] hover:shadow-[0_0_11px_20px_rgba(0,0,0,0.25)]`}>
       <Image
         src={movie.poster.previewUrl}
         alt='Movie poster'
