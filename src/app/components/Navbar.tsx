@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const Navbar = () => {
   return (
-    <div className='sticky top-0 flex h-[70px] w-full items-center justify-between bg-gradient-to-b from-black to-black/50 px-[130px] backdrop-blur-[2px]'>
+    <div className='sticky top-0 z-[3] flex h-[70px] w-full items-center justify-between bg-gradient-to-b from-black to-black/50 px-[130px] backdrop-blur-[2px]'>
       <Link href={'/'}>
         <div className='flex cursor-pointer items-center transition-all hover:text-[#BB2649] active:scale-[1.1] '>
           <h1 className='select-none text-[40px] font-bold tracking-widest'>
