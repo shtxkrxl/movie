@@ -20,7 +20,8 @@ const Slider = ({ size, name, query }: Props) => {
   );
 
   const isLarge = size === 'lg';
-  const isMobile = window.innerWidth < 1024;
+  const isMobile =
+    typeof window !== 'undefined' ? window.innerWidth < 1024 : false;
 
   const enterHandler = () => {
     setShowNav(true);
