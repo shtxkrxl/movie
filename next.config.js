@@ -8,6 +8,12 @@ const nextConfig = {
         port: '',
         pathname: '/images/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'avatars.mds.yandex.net',
+        port: '',
+        pathname: '/get-kinopoisk-image/**',
+      },
     ],
   },
 };
