@@ -17,13 +17,11 @@ const Movie = ({ params }: Props) => {
   );
 
   const [isFavourite, setIsFavourite] = useState(
-    typeof window !== 'undefined'
-      ? localStorage.getItem(params.movieId) != undefined
-      : null
+    localStorage ? localStorage.getItem(params.movieId) != undefined : false
   );
 
   const addFavourite = () => {
-    if (data && typeof window !== 'undefined') {
+    if (data && localStorage) {
       localStorage.setItem(
         data.id.toString(),
         JSON.stringify({
@@ -42,7 +40,7 @@ const Movie = ({ params }: Props) => {
   };
 
   const removeFavourite = () => {
-    if (typeof window !== 'undefined') {
+    if (localStorage) {
       localStorage.removeItem(params.movieId);
       setIsFavourite(false);
     }
