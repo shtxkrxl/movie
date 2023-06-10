@@ -68,20 +68,21 @@ const Movie = ({ params }: Props) => {
               height={386}
               className='pointer-events-none mx-auto h-auto w-[80vw] md:w-[269px]'
             />
-            {data.videos.trailers.filter(trailer => trailer.site === 'youtube')
-              .length !== 0 && (
-              <iframe
-                width='269'
-                src={
-                  data.videos.trailers.filter(
-                    trailer => trailer.site === 'youtube'
-                  )[0].url
-                }
-                title='YouTube video player'
-                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-                allowFullScreen
-                className='hidden md:block'></iframe>
-            )}
+            {data.videos?.trailers &&
+              data.videos.trailers.filter(trailer => trailer.site === 'youtube')
+                .length !== 0 && (
+                <iframe
+                  width='269'
+                  src={
+                    data.videos.trailers.filter(
+                      trailer => trailer.site === 'youtube'
+                    )[0].url
+                  }
+                  title='YouTube video player'
+                  allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+                  allowFullScreen
+                  className='hidden md:block'></iframe>
+              )}
           </div>
 
           <div className='flex flex-col gap-[30px]'>
@@ -129,20 +130,22 @@ const Movie = ({ params }: Props) => {
               {data.description}
             </p>
 
-            {data.videos.trailers.filter(trailer => trailer.site === 'youtube')
-              .length !== 0 && (
-              <iframe
-                width='269'
-                src={
-                  data.videos.trailers.filter(
-                    trailer => trailer.site === 'youtube'
-                  )[0].url
-                }
-                title='YouTube video player'
-                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-                allowFullScreen
-                className='mx-auto md:hidden'></iframe>
-            )}
+            {data.videos?.trailers &&
+              data.videos?.trailers.filter(
+                trailer => trailer.site === 'youtube'
+              ).length !== 0 && (
+                <iframe
+                  width='269'
+                  src={
+                    data.videos.trailers.filter(
+                      trailer => trailer.site === 'youtube'
+                    )[0].url
+                  }
+                  title='YouTube video player'
+                  allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+                  allowFullScreen
+                  className='mx-auto md:hidden'></iframe>
+              )}
 
             <div className='flex max-w-[500px] flex-col gap-[15px]'>
               <div className='text-center text-[28px] font-semibold md:text-left'>
@@ -231,7 +234,7 @@ const Movie = ({ params }: Props) => {
                   </div>
                 </li>
 
-                {data.budget.value && (
+                {data.budget?.value && (
                   <li className='flex flex-none justify-between text-[20px] text-[#B5B5B5]'>
                     <div className='w-[200px] leading-[25px]'>Бюджет</div>
                     <div className='w-[300px] text-white'>
@@ -241,7 +244,7 @@ const Movie = ({ params }: Props) => {
                   </li>
                 )}
 
-                {data.fees.world.value && (
+                {data.fees?.world?.value && (
                   <li className='flex flex-none justify-between text-[20px] text-[#B5B5B5]'>
                     <div className='w-[200px] leading-[25px]'>Сборы в мире</div>
                     <div className='w-[300px] text-white'>
@@ -251,7 +254,7 @@ const Movie = ({ params }: Props) => {
                   </li>
                 )}
 
-                {data.fees.russia?.value && (
+                {data.fees?.russia?.value && (
                   <li className='flex flex-none justify-between text-[20px] text-[#B5B5B5]'>
                     <div className='w-[200px] leading-[25px]'>
                       Сборы в России
