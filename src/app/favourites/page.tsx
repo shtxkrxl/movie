@@ -3,16 +3,16 @@
 import MovieCard from '../components/MovieCard';
 
 const Favourites = () => {
-  const keys = Object.keys(localStorage);
+  const keys = typeof window !== 'undefined' ? Object.keys(localStorage) : [];
 
-  const movies = keys
+  const movies = typeof window !== 'undefined' ? keys
     .map(key => {
       if (key.match(/[0-9]+/)) {
         return JSON.parse(localStorage.getItem(key)!);
       }
     })
     .filter(movie => movie !== undefined)
-    .sort((a, b) => b.time - a.time);
+    .sort((a, b) => b.time - a.time) : [];
 
   return (
     <div className='w-full px-[20px] pb-[100px] pt-[20px] lg:px-[130px]'>
