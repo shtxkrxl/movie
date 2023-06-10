@@ -5,19 +5,22 @@ import '@splidejs/react-splide/css';
 import { ArrowRight, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 import { HalfCircleSpinner } from 'react-epic-spinners';
-import useSWR from 'swr';
-import { MovieList } from '../models/models';
+import useSWRImmutable from 'swr/immutable';
+import { MovieList } from '../models/movieList';
 import { fetcher } from '../utils/fetcher';
 import MovieCard from './MovieCard';
+import Link from 'next/link';
+import Error from './Error';
 
 const Slider = ({ size, name, query }: Props) => {
   const [showNav, setShowNav] = useState(false);
-  const { data, error, isLoading } = useSWR<MovieList>(
+  const { data, error, isLoading } = useSWRImmutable<MovieList>(
     `https://api.kinopoisk.dev/v1.3/movie?sortField=votes.kp&${query}`,
     fetcher
   );
 
   const isLarge = size === 'lg';
+  const isMobile = window.innerWidth < 1024;
 
   const enterHandler = () => {
     setShowNav(true);
@@ -26,22 +29,28 @@ const Slider = ({ size, name, query }: Props) => {
     setShowNav(false);
   };
 
+  if (!isLoading && !data?.docs) {
+    return <Error />;
+  }
+
   return (
     <div>
-      <div className='mx-[130px] flex w-fit cursor-pointer items-center transition-all hover:scale-[1.1]'>
-        <h2
-          className={`${
-            isLarge ? 'text-[32px]' : 'text-[24px]'
-          } font-semibold`}>
-          {name}
-        </h2>
-        <ChevronRight
-          size={isLarge ? 40 : 30}
-          color='white'
-          strokeWidth={2}
-          className='pt-[5px]'
-        />
-      </div>
+      <Link href={`/category/${name.toLowerCase()}`}>
+        <div className='flex w-fit cursor-pointer items-center px-[20px] transition-all hover:scale-[1.1] lg:px-[130px]'>
+          <h2
+            className={`${
+              isLarge ? 'text-[32px]' : 'text-[24px]'
+            } font-semibold`}>
+            {name}
+          </h2>
+          <ChevronRight
+            size={isLarge ? 40 : 30}
+            color='white'
+            strokeWidth={2}
+            className='pt-[5px]'
+          />
+        </div>
+      </Link>
 
       {isLoading && (
         <div
@@ -52,44 +61,43 @@ const Slider = ({ size, name, query }: Props) => {
         </div>
       )}
 
-      {error && (
-        <div className='flex items-center justify-center text-[32px] text-[#BB2649]'>
-          Something went wrong...
-        </div>
-      )}
+      {error && <Error />}
 
-      {data && (
+      {data?.docs && (
         <div onMouseEnter={enterHandler} onMouseLeave={leaveHandler}>
           <Splide
             hasTrack={false}
             options={{
-              padding: 130,
-              height: isLarge ? 430 : 310,
-              perPage: isLarge ? 4 : 6,
+              padding: isMobile ? 20 : 130,
+              autoHeight: true,
+              autoWidth: true,
+              perMove: 2,
+              gap: 20,
               pagination: false,
             }}
-            className={`${isLarge ? 'h-[440px]' : 'h-[310px]'} relative`}>
+            className={`${isLarge ? 'h-auto' : 'h-auto'} relative`}>
             <SplideTrack>
               {data.docs.map(movie => (
-                <SplideSlide key={movie.id} className='pt-[20px]'>
+                <SplideSlide key={movie.id} className='py-[20px]'>
                   <MovieCard size={size} movie={movie} />
                 </SplideSlide>
               ))}
 
               <SplideSlide>
-                <div
+                <Link
+                  href={`/category/${name}`}
                   className={`${
-                    isLarge ? 'h-[386px] w-[269px]' : 'h-[274px] w-[191px]'
+                    isLarge ? 'h-full w-[200px]' : 'h-full w-[191px]'
                   } flex cursor-pointer items-center justify-center transition-all hover:scale-[1.1]`}>
                   <div className='flex flex-col items-center justify-center'>
                     <ArrowRight
-                      size={isLarge ? 60 : 50}
+                      size={60}
                       color='white'
                       className='rounded-full bg-neutral-900 p-[12px]'
                     />
                     <span className='pt-[10px] text-[20px]'>Показать все</span>
                   </div>
-                </div>
+                </Link>
               </SplideSlide>
             </SplideTrack>
 
@@ -97,10 +105,10 @@ const Slider = ({ size, name, query }: Props) => {
               <button
                 className={`${
                   !showNav && 'opacity-0'
-                } splide__arrow--prev absolute left-0 top-0 z-[2] cursor-pointer transition-all`}>
+                } splide__arrow--prev absolute left-0 top-0 z-[2] hidden cursor-pointer transition-all lg:block`}>
                 <div
                   className={`${
-                    isLarge ? 'h-[440px]' : 'h-[310px]'
+                    isLarge ? 'h-[400px]' : 'h-[300px]'
                   } flex items-center justify-center`}>
                   <ChevronRight size={60} strokeWidth={2} />
                 </div>
@@ -108,16 +116,16 @@ const Slider = ({ size, name, query }: Props) => {
 
               <div
                 className={`${!showNav && 'opacity-0'} ${
-                  isLarge ? 'h-[440px]' : 'h-[310px]'
-                } absolute left-0 top-0 z-[1] w-[130px] bg-gradient-to-r from-black/60 to-transparent transition-all`}></div>
+                  isLarge ? 'h-[400px]' : 'h-[300px]'
+                } absolute left-0 top-0 z-[1] hidden w-[130px] bg-gradient-to-r from-black/60 to-transparent transition-all lg:block`}></div>
 
               <button
                 className={`${
                   !showNav && 'opacity-0'
-                } splide__arrow--next absolute right-0 top-0 z-[2] cursor-pointer transition-all`}>
+                } splide__arrow--next absolute right-0 top-0 z-[2] hidden cursor-pointer transition-all lg:block`}>
                 <div
                   className={`${
-                    isLarge ? 'h-[440px]' : 'h-[310px]'
+                    isLarge ? 'h-[400px]' : 'h-[300px]'
                   } flex items-center justify-center`}>
                   <ChevronRight size={60} strokeWidth={2} />
                 </div>
@@ -125,8 +133,8 @@ const Slider = ({ size, name, query }: Props) => {
 
               <div
                 className={`${!showNav && 'opacity-0'} ${
-                  isLarge ? 'h-[440px]' : 'h-[310px]'
-                } absolute right-0 top-0 z-[1] w-[130px] bg-gradient-to-l from-black/60 to-transparent transition-all`}></div>
+                  isLarge ? 'h-[400px]' : 'h-[300px]'
+                } absolute right-0 top-0 z-[1] hidden w-[130px] bg-gradient-to-l from-black/60 to-transparent transition-all lg:block`}></div>
             </div>
           </Splide>
         </div>
