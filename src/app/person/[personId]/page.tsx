@@ -45,17 +45,19 @@ const Person = ({ params }: Props) => {
                 О персоне
               </div>
               <div className='flex flex-col gap-[7px]'>
-                <li className='flex flex-none justify-between text-[20px] text-[#B5B5B5]'>
-                  <div className='w-[200px] leading-[25px]'>Карьера</div>
-                  <div className='w-[300px] text-white'>
-                    {data.profession.map(
-                      (profession, index) =>
-                        `${profession.value}${
-                          index !== data.profession.length - 1 ? ', ' : ''
-                        }`
-                    )}
-                  </div>
-                </li>
+                {data.profession && (
+                  <li className='flex flex-none justify-between text-[20px] text-[#B5B5B5]'>
+                    <div className='w-[200px] leading-[25px]'>Карьера</div>
+                    <div className='w-[300px] text-white'>
+                      {data.profession.map(
+                        (profession, index) =>
+                          `${profession.value}${
+                            index !== data.profession.length - 1 ? ', ' : ''
+                          }`
+                      )}
+                    </div>
+                  </li>
+                )}
 
                 {data.growth > 0 && (
                   <li className='flex flex-none justify-between text-[20px] text-[#B5B5B5]'>
@@ -66,16 +68,20 @@ const Person = ({ params }: Props) => {
                   </li>
                 )}
 
-                <li className='flex flex-none justify-between text-[20px] text-[#B5B5B5]'>
-                  <div className='w-[200px] leading-[25px]'>Дата рождения</div>
-                  <div className='w-[300px] text-white'>
-                    {new Date(data.birthday).toLocaleString('ru', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    })}
-                  </div>
-                </li>
+                {data.birthday && (
+                  <li className='flex flex-none justify-between text-[20px] text-[#B5B5B5]'>
+                    <div className='w-[200px] leading-[25px]'>
+                      Дата рождения
+                    </div>
+                    <div className='w-[300px] text-white'>
+                      {new Date(data.birthday).toLocaleString('ru', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })}
+                    </div>
+                  </li>
+                )}
 
                 {data.death && (
                   <li className='flex flex-none justify-between text-[20px] text-[#B5B5B5]'>
@@ -90,7 +96,7 @@ const Person = ({ params }: Props) => {
                   </li>
                 )}
 
-                {data.birthPlace.length > 0 && (
+                {data.birthPlace && data.birthPlace.length > 0 && (
                   <li className='flex flex-none justify-between text-[20px] text-[#B5B5B5]'>
                     <div className='w-[200px] leading-[25px]'>
                       Место рождения
@@ -106,7 +112,7 @@ const Person = ({ params }: Props) => {
                   </li>
                 )}
 
-                {data.movies.length > 0 && (
+                {data.movies && data.movies.length > 0 && (
                   <li className='flex flex-none justify-between text-[20px] text-[#B5B5B5]'>
                     <div className='w-[200px] leading-[25px]'>
                       Всего фильмов
@@ -120,29 +126,30 @@ const Person = ({ params }: Props) => {
             </div>
           </div>
 
-          {data.movies.filter(movie => movie.description).length > 0 && (
-            <div className='flex flex-col gap-[10px] pl-[30px] pt-[50px]'>
-              <div className='cursor-default text-center text-[24px] font-semibold md:text-left'>
-                Лучшие фильмы
+          {data.movies &&
+            data.movies.filter(movie => movie.description).length > 0 && (
+              <div className='flex flex-col gap-[10px] pl-[30px] pt-[50px]'>
+                <div className='cursor-default text-center text-[24px] font-semibold md:text-left'>
+                  Лучшие фильмы
+                </div>
+                <ul className='flex flex-col gap-[3px] text-center text-[18px] md:text-left'>
+                  {data.movies
+                    .sort((a, b) => b.rating! - a.rating!)
+                    .filter(movie => movie.description)
+                    .map(
+                      (movie, index) =>
+                        index <= 10 && (
+                          <Link
+                            href={`/movie/${movie.id}`}
+                            key={movie.id}
+                            className='cursor-pointer transition-all hover:text-[#BB2649]'>
+                            {movie.name ? movie.name : movie.alternativeName}
+                          </Link>
+                        )
+                    )}
+                </ul>
               </div>
-              <ul className='flex flex-col gap-[3px] text-center text-[18px] md:text-left'>
-                {data.movies
-                  .sort((a, b) => b.rating! - a.rating!)
-                  .filter(movie => movie.description)
-                  .map(
-                    (movie, index) =>
-                      index <= 10 && (
-                        <Link
-                          href={`/movie/${movie.id}`}
-                          key={movie.id}
-                          className='cursor-pointer transition-all hover:text-[#BB2649]'>
-                          {movie.name ? movie.name : movie.alternativeName}
-                        </Link>
-                      )
-                  )}
-              </ul>
-            </div>
-          )}
+            )}
         </div>
       )}
     </div>
