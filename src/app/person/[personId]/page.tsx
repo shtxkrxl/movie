@@ -1,10 +1,10 @@
 'use client';
 
-import Image from 'next/image';
-import { fetcher } from '@/app/utils/fetcher';
 import Error from '@/app/components/Error';
-import { HalfCircleSpinner } from 'react-epic-spinners';
+import Spinner from '@/app/components/Spinner';
 import { Person } from '@/app/models/person';
+import { fetcher } from '@/app/utils/fetcher';
+import Image from 'next/image';
 import Link from 'next/link';
 import useSWRImmutable from 'swr/immutable';
 
@@ -16,22 +16,18 @@ const Person = ({ params }: Props) => {
 
   return (
     <div>
-      {isLoading && (
-        <div className='flex h-[200px] w-full items-center justify-center'>
-          <HalfCircleSpinner size={60} color='#BB2649' />
-        </div>
-      )}
+      {isLoading && <Spinner />}
 
       {error && <Error />}
 
       {data && (
-        <div className='flex flex-col items-center  gap-[10px] px-[20px] pb-[100px] pt-[20px] md:flex-row md:items-start md:justify-start md:gap-[50px] md:px-[130px]'>
+        <div className='flex flex-col items-center gap-[10px] px-[20px] pb-[100px] pt-[20px] md:flex-row md:items-start md:justify-start md:gap-[50px] md:px-[130px]'>
           <Image
             src={data.photo}
             alt='Person photo'
             width={269}
             height={386}
-            className='pointer-events-none mx-auto h-auto w-[80vw] md:w-[269px]'
+            className='pointer-events-none h-auto w-[80vw] md:w-[269px]'
           />
 
           <div className='flex flex-col gap-[30px]'>
@@ -124,7 +120,7 @@ const Person = ({ params }: Props) => {
             </div>
           </div>
 
-          {data.movies.length > 0 && (
+          {data.movies.filter(movie => movie.description).length > 0 && (
             <div className='flex flex-col gap-[10px] pl-[30px] pt-[50px]'>
               <div className='cursor-default text-center text-[24px] font-semibold md:text-left'>
                 Лучшие фильмы

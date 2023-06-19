@@ -2,11 +2,10 @@
 
 import Error from '@/app/components/Error';
 import MovieCard from '@/app/components/MovieCard';
+import Spinner from '@/app/components/Spinner';
 import { Movie, MovieList } from '@/app/models/movieList';
 import { fetcher } from '@/app/utils/fetcher';
 import { useEffect, useState } from 'react';
-import { HalfCircleSpinner } from 'react-epic-spinners';
-import { useInView } from 'react-intersection-observer';
 import useSWRImmutable from 'swr/immutable';
 
 const Category = ({ params }: Props) => {
@@ -24,16 +23,16 @@ const Category = ({ params }: Props) => {
     fetcher
   );
 
-  const clickHandler = () => {
-    setPage(prev => prev + 1);
-  };
-
   useEffect(() => {
     if (data) {
       const movieList: Movie[] = data.docs;
       setMovies(prev => prev.concat(movieList));
     }
   }, [data]);
+
+  const clickHandler = () => {
+    setPage(prev => prev + 1);
+  };
 
   return (
     <div className='w-full px-[20px] pb-[100px] pt-[0] lg:px-[130px] lg:pt-[20px]'>
@@ -49,21 +48,19 @@ const Category = ({ params }: Props) => {
             ))}
           </div>
 
-          <div className='flex h-[100px] w-full items-center justify-center'>
-            <button
-              onClick={clickHandler}
-              className='flex items-center justify-center gap-[5px] rounded-[10px] px-[15px] py-[10px] text-[20px] outline outline-[2px] outline-[#BB2649] transition-all hover:bg-[#BB2649]/40 active:scale-[1.1]'>
-              Загрузить ещё
-            </button>
-          </div>
+          {data && (
+            <div className='flex h-[100px] w-full items-center justify-center'>
+              <button
+                onClick={clickHandler}
+                className='flex items-center justify-center gap-[5px] rounded-[10px] px-[15px] py-[10px] text-[20px] outline outline-[2px] outline-[#BB2649] transition-all hover:bg-[#BB2649]/40 active:scale-[1.1]'>
+                Загрузить ещё
+              </button>
+            </div>
+          )}
         </div>
       )}
 
-      {isLoading && (
-        <div className='flex h-[200px] w-full items-center justify-center'>
-          <HalfCircleSpinner size={60} color='#BB2649' />
-        </div>
-      )}
+      {isLoading && <Spinner />}
 
       {error && <Error />}
     </div>

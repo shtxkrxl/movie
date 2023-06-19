@@ -2,9 +2,9 @@
 
 import Error from '@/app/components/Error';
 import MovieCard from '@/app/components/MovieCard';
+import Spinner from '@/app/components/Spinner';
 import { MovieList } from '@/app/models/movieList';
 import { fetcher } from '@/app/utils/fetcher';
-import { HalfCircleSpinner } from 'react-epic-spinners';
 import useSWRImmutable from 'swr/immutable';
 
 const Search = ({ params }: Props) => {
@@ -21,11 +21,7 @@ const Search = ({ params }: Props) => {
         Поиск: {searchQuery}
       </h2>
 
-      {isLoading && (
-        <div className='flex h-[200px] w-full items-center justify-center'>
-          <HalfCircleSpinner size={60} color='#BB2649' />
-        </div>
-      )}
+      {isLoading && <Spinner />}
 
       {error && <Error />}
 

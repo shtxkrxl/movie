@@ -1,9 +1,9 @@
 'use client';
 
 import { Bookmark, Clapperboard, Search, SearchX } from 'lucide-react';
-import Input from './Input';
 import Link from 'next/link';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
+import Input from './Input';
 
 const Navbar = () => {
   const [showInput, setShowInput] = useState(false);
@@ -30,6 +30,7 @@ const Navbar = () => {
               showInput ? 'absolute right-[20px] top-[70px]' : 'hidden'
             } md:block`}
           />
+
           {!showInput && (
             <Search
               onClick={showHandler}
@@ -42,6 +43,7 @@ const Navbar = () => {
               className='h-[35px] w-[35px] cursor-pointer stroke-[#BB2649] stroke-[1px] transition-all hover:stroke-[#BB2649] active:scale-[1.1] md:hidden'
             />
           )}
+
           <Link href={'/favourites'}>
             <Bookmark className='h-[35px] w-[35px] cursor-pointer stroke-white stroke-[1px] transition-all hover:stroke-[#BB2649] active:scale-[1.1]' />
           </Link>

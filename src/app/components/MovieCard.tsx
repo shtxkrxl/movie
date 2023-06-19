@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import { Movie } from '../models/movieList';
 import Link from 'next/link';
+import { Movie } from '../models/movieList';
 
 const MovieCard = ({ size, movie }: Props) => {
   return (

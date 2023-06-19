@@ -3,14 +3,14 @@
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import { ArrowRight, ChevronRight } from 'lucide-react';
+import Link from 'next/link';
 import { useState } from 'react';
-import { HalfCircleSpinner } from 'react-epic-spinners';
 import useSWRImmutable from 'swr/immutable';
 import { MovieList } from '../models/movieList';
 import { fetcher } from '../utils/fetcher';
-import MovieCard from './MovieCard';
-import Link from 'next/link';
 import Error from './Error';
+import MovieCard from './MovieCard';
+import Spinner from './Spinner';
 
 const Slider = ({ size, name, query }: Props) => {
   const [showNav, setShowNav] = useState(false);
@@ -53,14 +53,7 @@ const Slider = ({ size, name, query }: Props) => {
         </div>
       </Link>
 
-      {isLoading && (
-        <div
-          className={`${
-            isLarge ? 'h-[440px]' : 'h-[310px]'
-          } flex w-full items-center justify-center`}>
-          <HalfCircleSpinner size={60} color='#BB2649' />
-        </div>
-      )}
+      {isLoading && <Spinner />}
 
       {error && <Error />}
 

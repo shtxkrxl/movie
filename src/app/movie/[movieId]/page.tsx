@@ -1,13 +1,13 @@
 'use client';
 
-import Image from 'next/image';
-import React, { useState } from 'react';
-import { BookmarkMinus, BookmarkPlus, Play } from 'lucide-react';
+import Error from '@/app/components/Error';
 import { Movie } from '@/app/models/movie';
 import { fetcher } from '@/app/utils/fetcher';
-import { HalfCircleSpinner } from 'react-epic-spinners';
-import Error from '@/app/components/Error';
+import { BookmarkMinus, BookmarkPlus, Play } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
+import { HalfCircleSpinner } from 'react-epic-spinners';
 import useSWRImmutable from 'swr/immutable';
 
 const Movie = ({ params }: Props) => {
@@ -60,13 +60,13 @@ const Movie = ({ params }: Props) => {
 
       {data && (
         <div className='flex flex-col justify-center gap-[10px] px-[20px] pb-[100px] pt-[20px] md:flex-row md:justify-start md:gap-[50px] lg:px-[130px]'>
-          <div className='flex flex-col gap-[30px]'>
+          <div className='flex flex-col items-center gap-[30px]'>
             <Image
               src={data.poster.previewUrl!}
               alt='Movie poster'
               width={269}
               height={386}
-              className='pointer-events-none mx-auto h-auto w-[80vw] md:w-[269px]'
+              className='pointer-events-none h-auto w-[80vw] md:w-[269px]'
             />
             {data.videos?.trailers &&
               data.videos.trailers.filter(trailer => trailer.site === 'youtube')
@@ -152,7 +152,7 @@ const Movie = ({ params }: Props) => {
                 О фильме
               </div>
               <div className='flex flex-col gap-[10px]'>
-                {data.rating.kp && (
+                {data.rating.kp > 1 && (
                   <li className='flex flex-none justify-between text-[20px] text-[#B5B5B5]'>
                     <div className='w-[200px] leading-[25px]'>Рейтинг</div>
                     <div

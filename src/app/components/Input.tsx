@@ -1,15 +1,15 @@
 'use client';
 
 import { Search } from 'lucide-react';
-import { useState } from 'react';
-import { useDebounce } from '../hooks/debounce';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
+import useSWRImmutable from 'swr/immutable';
+import { useDebounce } from '../hooks/debounce';
 import { MovieList } from '../models/movieList';
 import { fetcher } from '../utils/fetcher';
-import Link from 'next/link';
-import useSWRImmutable from 'swr/immutable';
 
-const Input = ({ className }: { className?: string }) => {
+const Input = ({ className }: Props) => {
   const [input, setInput] = useState('');
   const debounced = useDebounce(input);
 
@@ -54,6 +54,7 @@ const Input = ({ className }: { className?: string }) => {
                   height={80}
                   className='h-[80px] w-[56px]'
                 />
+
                 <div>
                   <span className='text-[20px] font-semibold text-black'>
                     {movie.name ? movie.name : movie.alternativeName}
@@ -92,5 +93,9 @@ const Input = ({ className }: { className?: string }) => {
     </div>
   );
 };
+
+interface Props {
+  className?: string;
+}
 
 export default Input;
