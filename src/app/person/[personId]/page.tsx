@@ -21,7 +21,7 @@ const Person = ({ params }: Props) => {
       {error && <Error />}
 
       {data && (
-        <div className='flex flex-col items-center gap-[10px] px-[20px] pb-[100px] pt-[20px] md:flex-row md:items-start md:justify-start md:gap-[50px] md:px-[130px]'>
+        <div className='flex flex-col items-center gap-[10px] px-[20px] pt-[20px] md:flex-row md:items-start md:justify-start md:gap-[50px] md:px-[130px]'>
           <Image
             src={data.photo}
             alt='Person photo'
@@ -128,7 +128,7 @@ const Person = ({ params }: Props) => {
 
           {data.movies &&
             data.movies.filter(movie => movie.description).length > 0 && (
-              <div className='flex flex-col gap-[10px] pl-[30px] pt-[50px]'>
+              <div className='flex flex-col gap-[10px] pt-[50px] lg:pl-[30px]'>
                 <div className='cursor-default text-center text-[24px] font-semibold md:text-left'>
                   Лучшие фильмы
                 </div>

@@ -59,7 +59,7 @@ const Movie = ({ params }: Props) => {
       {error && <Error />}
 
       {data && (
-        <div className='flex flex-col justify-center gap-[10px] px-[20px] pb-[100px] pt-[20px] md:flex-row md:justify-start md:gap-[50px] lg:px-[130px]'>
+        <div className='flex flex-col justify-center gap-[10px] px-[20px] pt-[20px] md:flex-row md:justify-start md:gap-[50px] lg:px-[130px]'>
           <div className='flex flex-col items-center gap-[30px]'>
             <Image
               src={data.poster.previewUrl!}
@@ -309,7 +309,7 @@ const Movie = ({ params }: Props) => {
           </div>
 
           <div>
-            <div className='flex flex-col gap-[10px] pl-[30px] pt-[50px]'>
+            <div className='flex flex-col gap-[10px] pt-[50px] lg:pl-[30px]'>
               {data.persons.filter(person => person.profession === 'актеры')
                 .length !== 0 && (
                 <div className='pb-[50px]'>

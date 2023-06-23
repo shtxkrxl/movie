@@ -35,7 +35,7 @@ const Category = ({ params }: Props) => {
   };
 
   return (
-    <div className='w-full px-[20px] pb-[100px] pt-[0] lg:px-[130px] lg:pt-[20px]'>
+    <div className='w-full px-[20px] pt-[0] lg:px-[130px] lg:pt-[20px]'>
       <h2 className='cursor-default text-[32px] font-semibold'>
         {categoryName}
       </h2>
