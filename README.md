@@ -20,7 +20,7 @@
 <h3 align="center">Movie</h3>
 
   <p align="center">
-    Website for viewing information about movies
+    Веб-сайт кинотека, вдохновленный Кинопоиском
     <br />
     <a href="https://movie-shtxkrxl.vercel.app/">View Demo</a>
     ·
@@ -43,7 +43,6 @@
     <li>
       <a href="#getting-started">Getting Started</a>
     </li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
@@ -52,10 +51,22 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-The project is a website for viewing information about movies, which was made by me for educational purposes.
+![image](https://github.com/shtxkrxl/movie/assets/68380962/98f3667b-84b1-4889-b6ed-c43ea8a49d1c)
+
+Я разработал этот сайт из цели обучиться работать с фреймворком Next. В качестве примера я взял популярный сайт [Кинопоиск](https://hd.kinopoisk.ru/).    
+
+Чему обучился во время разработки:
+* Работать с фреймворком Next
+* Использовать типизацию TypeScript
+* Создовать адаптивный дизайн для сайта
+* Взаимодействовать с REST API
+* Использовать библеотеку для фетчинга данных - SWR
+* Создовать стили при помощи css-фреймворка - Tailwindcss
+* Создавать слайдеры при помощи библиотеки - Swiper
+* Работать с локальным хранилищем
+* Пользоваться хостингом Vercel
 
 ### Built With
-
 * [![Next][Next.js]][Next-url]
 * [![React][React.js]][React-url]
 * [![typescript][typescript]][typescript-url]
@@ -64,50 +75,38 @@ The project is a website for viewing information about movies, which was made by
 <!-- GETTING STARTED -->
 ## Getting Started
 
-If you want to run the project locally, follow these instructions.
+Если вы хотите запустить проект локально, следуйте следующим инструкциям.
 
-1. Clone the repo
+1. Склонируйте репозиторий
    ```sh
    git clone https://github.com/shtxkrxl/movie.git
    ```
-2. Install NPM packages
+2. Установите NPM пакеты
    ```sh
    npm install
    ```
-3. Get a free API Key at https://kinopoisk.dev/
-4. Enter your API in `.env.local`
+3. Получите бесплатный ключ на https://kinopoisk.dev/
+4. Введите свой ключ в `.env.local`
    ```sh
    NEXT_PUBLIC_API_KEY=YOUR_API
    ```
-5. Run the development server
+5. Запустите сервер для разработки
    ```sh
    npm run dev
    ```
-6. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+6. Откройте [http://localhost:3000](http://localhost:3000) в своём браузере чтобы увидеть результат
 
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Распространяется под лицензией MIT License. Читайте `LICENSE.txt` для большей информации.
 
 <!-- CONTACT -->
 ## Contact
 
 Alexandr Kalmaev - sanya.kalmaev@yandex.ru
 
-Project Link: [https://github.com/shtxkrxl/movie](https://github.com/shtxkrxl/movie)
+Ссылка на проект: [https://github.com/shtxkrxl/movie](https://github.com/shtxkrxl/movie)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
