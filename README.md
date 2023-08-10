@@ -66,7 +66,7 @@
 * Писал стили с помощью css-фреймворка - [Tailwindcss](https://tailwindcss.com/)
 * Взаимодействовал с REST API сайта https://kinopoisk.dev/
 * Использовал библиотеку для фетчинга данных - [SWR](https://swr.vercel.app/ru)
-* Создавать слайдеры при помощи библиотеки - [Swiper](https://swiperjs.com/)
+* Создавал слайдеры при помощи библиотеки - [Swiper](https://swiperjs.com/)
 * Разработал поиск по фильмам и сериалам
 * Работал с локальным хранилищем
 * Использовал хостинг [Vercel](https://vercel.com)
