@@ -20,60 +20,59 @@
 <h3 align="center">Movie</h3>
 
   <p align="center">
-    Веб-сайт кинотека, вдохновленный Кинопоиском
+    Веб-сайт с огромной коллекцией фильмов, сериалов и мультфильмов различных жанров и времен создания
     <br />
-    <a href="https://movie-shtxkrxl.vercel.app/">View Demo</a>
+    <a href="https://movie-shtxkrxl.vercel.app/">Сайт</a>
     ·
-    <a href="https://github.com/shtxkrxl/movie/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/shtxkrxl/movie/issues">Request Feature</a>
+    <a href="https://github.com/shtxkrxl/movie/issues">Сообщить об ошибке</a>
   </p>
 </div>
 
 <!-- TABLE OF CONTENTS -->
 <details>
-  <summary>Table of Contents</summary>
+  <summary>Содержание</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
+      <a href="#о-проекте">О проекте</a>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#запуск-локально">Запуск локально</a>
     </li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#лицензия">Лицензия</a></li>
+    <li><a href="#контакты">Контакты</a></li>
   </ol>
 </details>
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## О проекте
 
 ![image](https://github.com/shtxkrxl/movie/assets/68380962/98f3667b-84b1-4889-b6ed-c43ea8a49d1c)
 
-Я разработал этот сайт из цели обучиться работать с фреймворком Next. В качестве примера я взял популярный сайт [Кинопоиск](https://hd.kinopoisk.ru/).    
+Проект сайта кинотеки, представляет собой платформу, где пользователи могут искать информацию о фильмах, сериалах, актерах и других студийных работниках.  
 
-Чему обучился во время разработки:
-* Работать с фреймворком Next
-* Использовать типизацию TypeScript
-* Создовать адаптивный дизайн для сайта
-* Взаимодействовать с REST API
-* Использовать библеотеку для фетчинга данных - SWR
-* Создовать стили при помощи css-фреймворка - Tailwindcss
-* Создавать слайдеры при помощи библиотеки - Swiper
-* Работать с локальным хранилищем
-* Пользоваться хостингом Vercel
+Основной функционал проекта включает в себя:
+* Поиск фильмов и сериалов: Пользователи могут вводить название фильма или сериала в форму поиска, и система будет отображать результаты, относящиеся к их запросу
+* Информация об актерах и команде фильма: Веб-сайт содержит информацию об актерах и режиссерах
+* Рейтинги и отзывы: Пользователь может посмотреть на средний рейтинг пользователей с сайта [Кинопоиск](https://www.kinopoisk.ru/)
+* Список избранного: Пользователь может добавлять фильмы и сериалы в свой список избранного
+* Разделение фильмов по жанрам: Фильмы и сериалы классифицируются по жанрам
+* Подробная информация о фильмах: Каждый фильм имеет свою отдельную страницу с дополнительной информацией, включая описание, бюджет, сборы, трейлер, оценки и актерский состав.
 
-### Built With
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![typescript][typescript]][typescript-url]
-* [![Tailwindcss][Tailwindcss]][Tailwindcss-url]
+Моя цель разработки проекта состоит в том, чтобы научиться использовать фреймворк Next, а также взаимодействовать с REST API. Для проекта был использован api сайта https://kinopoisk.dev/
+
+Во время разработки:
+* Использовал фреймворк [Next](https://nextjs.org/)
+* Использовал типизацию [TypeScript](https://www.typescriptlang.org/)
+* Писал стили с помощью css-фреймворка - [Tailwindcss](https://tailwindcss.com/)
+* Взаимодействовал с REST API сайта https://kinopoisk.dev/
+* Использовал библиотеку для фетчинга данных - [SWR](https://swr.vercel.app/ru)
+* Создавать слайдеры при помощи библиотеки - [Swiper](https://swiperjs.com/)
+* Разработал поиск по фильмам и сериалам
+* Работал с локальным хранилищем
+* Использовал хостинг [Vercel](https://vercel.com)
 
 <!-- GETTING STARTED -->
-## Getting Started
+## Запуск локально
 
 Если вы хотите запустить проект локально, следуйте следующим инструкциям.
 
@@ -97,14 +96,14 @@
 6. Откройте [http://localhost:3000](http://localhost:3000) в своём браузере чтобы увидеть результат
 
 <!-- LICENSE -->
-## License
+## Лицензия
 
 Распространяется под лицензией MIT License. Читайте `LICENSE.txt` для большей информации.
 
 <!-- CONTACT -->
-## Contact
+## Контакты
 
-Alexandr Kalmaev - sanya.kalmaev@yandex.ru
+Александр Кальмаев - sanya.kalmaev@yandex.ru
 
 Ссылка на проект: [https://github.com/shtxkrxl/movie](https://github.com/shtxkrxl/movie)
 
